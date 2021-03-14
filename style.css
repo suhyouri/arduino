@@ -1,0 +1,42 @@
+body {
+    background-color: yellow;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    color: rgb(0, 0, 0);
+    font-size: 2em;
+    padding-top: 20px;
+    width: 100%;
+    font-family: Georgia;
+    text-align: center;
+  }
+  
+  h2 {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 100;
+    font-size: 22px;
+    line-height: 24px;
+    padding-bottom: 30px;
+    text-align: center;
+    font-family: Georgia;
+  }
+  
+  p {
+    color: AliceBlue;
+    line-height: 1.3em;
+    text-align: left;
+    width: 100%;
+    font-family: Helvetica;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  button {
+    background-color: yellow;
+  }
+   
+  div {
+    text-align: center; 
+  }

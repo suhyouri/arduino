@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Remote Control My Server+User Counter</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body style="background-color: yellow">
+    <h1>Remote Control My Server+User Counter</h1>
+    <h2 id="userCount">users online :</h2>
+    <div>
+      <button onclick="RbuttonClicked()" id="2">red</button>
+      <button onclick="BbuttonClicked()" id="3">blue</button>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      let socket = io.connect();
+
+      function RbuttonClicked() {
+        socket.emit("Rclicked");
+      }
+      function BbuttonClicked() {
+        socket.emit("Bclicked");
+      }
+
+      socket.on("userCount", function (data) {
+        document.getElementById("userCount").innerHTML =
+          "users online : " + data;
+      });
+
+      socket.on("currentcolor", function (data) {
+        if (data) {
+          document.body.style.backgroundColor = data;
+          console.log("background color to: "+ data);
+        } else {
+          console.log("error!");
+        }
+      });
+
+      socket.on("currentbtnRcolor", function (data) {
+        if (data){
+          document.getElementById("2").style.backgroundColor=data;
+        }
+      });
+
+      socket.on("currentbtnBcolor", function (data) {
+        if(data) {
+            document.getElementById("3").style.backgroundColor=data;
+        }
+      });
+
+
+      // socket.on("RbuttonUpdate", function (data) {
+      //   if (data === 1) {
+      //     document.getElementById("2").style.backgroundColor = "red";
+      //     document.body.style.backgroundColor = "red";
+
+      //   } else {
+      //     document.getElementById("2").style.backgroundColor = "yellow";
+      //     document.body.style.backgroundColor = "yellow";
+      //   }
+      // });
+
+      // socket.on("BbuttonUpdate", function (data) {
+      //   if (data === 1) {
+      //     document.getElementById("3").style.backgroundColor = "blue";
+      //     document.body.style.backgroundColor = "blue";
+      //   } else {
+      //     document.getElementById("3").style.backgroundColor = "yellow";
+      //     document.body.style.backgroundColor = "yellow";
+      //   }
+      // });
+    </script>
+  </body>
+</html>
